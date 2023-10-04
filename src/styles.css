@@ -1,0 +1,119 @@
+@font-face {
+  font-family: "luxurious";
+  src: url("./luxuriousscript-regular-webfont.woff2") format("woff2"),
+    url("./luxuriousscript-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "tangerine";
+  src: url("./tangerine-regular-webfont.woff2") format("woff2"),
+    url("./tangerine-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --pink: #e33e38;
+  font-family: "tangerine", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8d7d7;
+}
+
+.content {
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 25px;
+  border: 10px solid lightcoral;
+  max-width: 800px;
+  text-align: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.navBar {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+.navButton {
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: lightcoral;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 2px black;
+  transition: all 0.1s ease-in-out;
+}
+
+.navButton:hover {
+  font-size: 16px;
+  border: 3px solid white;
+  box-shadow: 0 0 15px red;
+  width: 105px;
+  height: 40px;
+}
+
+.selected {
+  position: relative;
+  color: black;
+  background-color: white;
+}
+
+.tea-pot {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-25deg);
+}
+
+.title {
+  font-size: 70px;
+  margin: 25px 0;
+  color: var(--pink);
+  font-weight: bolder;
+  -webkit-text-stroke: 1px rgb(56, 43, 43);
+  letter-spacing: 2.5px;
+  transition: text-shadow 0.3s ease;
+}
+
+.title:hover {
+  -webkit-text-stroke: 1px white;
+  text-shadow: 0 0 5px red;
+}
+
+.sub-hero {
+  color: var(--pink);
+  font-size: 40px;
+  -webkit-text-stroke: 0.3px rgb(32, 31, 31);
+  transition: text-shadow 0.3s ease;
+}
+
+.intro-container {
+  font-size: 34px;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "tangerine";
+  font-weight: 500;
+  border-radius: 15px;
+  background-color: rgba(255, 182, 193, 0.645);
+}
