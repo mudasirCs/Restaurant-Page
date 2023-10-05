@@ -1,41 +1,36 @@
+import loadContactPage from "./contactPage";
 import loadHomePage from "./homePage";
-import loadMenu from "./menuPage";
+import loadMenuPage from "./menuPage";
 import { initializePage } from "./pageLoad";
-import teaPotImageSrc from "./teapot.png";
 
 document.addEventListener("DOMContentLoaded", () => {
   const { body, contentDiv } = initializePage();
   const btns = document.querySelectorAll(".navButton");
   const navBar = document.querySelector(".navBar");
-
-  navigation(navBar, btns);
-  //pseudo button, have to implement, button select
-  btns[0].click();
+  navigation(contentDiv, navBar, btns);
 });
 
-function navigation(navBar, btns) {
-  const teaPotImage = document.createElement("img");
+function navigation(contentDiv, navBar, btns) {
+  const activationFunctions = [loadHomePage, loadMenuPage, loadContactPage];
 
-  teaPotImage.src = teaPotImageSrc;
-  teaPotImage.alt = "Teapot";
-  teaPotImage.className = "tea-pot";
-
-  btns.forEach((btn) => {
+  btns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
-      btns.forEach((otherBtn) => otherBtn.classList.remove("selected"));
-      btn.classList.add("selected");
-
-      teaPotImage.style.display = "block";
-
-      const btnRect = btn.getBoundingClientRect();
-      const containerRect = navBar.getBoundingClientRect();
-      const leftPosition = btnRect.right - containerRect.left - 30;
-      const topPosition = btnRect.top - containerRect.top - 40;
-
-      teaPotImage.style.left = leftPosition + "px";
-      teaPotImage.style.top = topPosition + "px";
-
-      navBar.appendChild(teaPotImage);
+      loadRefresher(contentDiv);
+      activationFunctions[index](contentDiv);
     });
   });
+  btns[1].click();
+}
+
+function loadRefresher(contentDiv) {
+  const pageContent = contentDiv.lastChild;
+
+  const regex = new RegExp("-container", "i");
+  const hasMatchingClass = Array.from(pageContent.classList).some((className) =>
+    regex.test(className)
+  );
+
+  if (pageContent && pageContent.tagName === "DIV" && hasMatchingClass) {
+    contentDiv.removeChild(pageContent);
+  }
 }

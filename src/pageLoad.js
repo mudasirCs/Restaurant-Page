@@ -1,6 +1,7 @@
 import { default as loadHomePage } from "./homePage";
 import restaurantBg from "./restaurantBg.jpg";
 import "./styles.css";
+import teaPotImageSrc from "./teapot.png";
 
 export function initializePage() {
   const body = document.querySelector("body");
@@ -9,6 +10,7 @@ export function initializePage() {
 
   loadTitle(contentDiv);
   initializeNavbar(contentDiv);
+  navigation(contentDiv);
   loadHomePage(contentDiv);
   return { body, contentDiv };
 }
@@ -44,4 +46,31 @@ function initializeNavbar(contentDiv) {
   }
 
   contentDiv.appendChild(navBar);
+}
+
+function navigation(contentDiv) {
+  const btns = document.querySelectorAll(".navButton");
+  const navBar = document.querySelector(".navBar");
+  const teaPotImage = document.createElement("img");
+
+  teaPotImage.src = teaPotImageSrc;
+  teaPotImage.alt = "Teapot";
+  teaPotImage.className = "tea-pot";
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btns.forEach((otherBtn) => otherBtn.classList.remove("selected"));
+      btn.classList.add("selected");
+
+      //teapot positioning logic
+      const btnRect = btn.getBoundingClientRect();
+      const containerRect = navBar.getBoundingClientRect();
+      const leftPosition = btnRect.right - containerRect.left - 30;
+      const topPosition = btnRect.top - containerRect.top - 40;
+      teaPotImage.style.left = leftPosition + "px";
+      teaPotImage.style.top = topPosition + "px";
+
+      navBar.appendChild(teaPotImage);
+    });
+  });
 }
