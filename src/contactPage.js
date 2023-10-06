@@ -93,24 +93,30 @@ export default function loadContactPage(contentDiv) {
   }
 
   const shopInfo = document.createElement("div");
-  shopInfo.classList.add("contact-item");
+  shopInfo.classList.add("shop-info");
 
   //name,address, location, landline, hours
   for (const detail in teaShopDetails) {
     if (detail === "hoursOfOperation") continue;
     const shopDetails = document.createElement("p");
     shopDetails.innerText = `${detail}: ${teaShopDetails[detail]}`;
-    shopDetails.classList.add("contact-details");
+    shopDetails.classList.add("shop-details");
     shopInfo.appendChild(shopDetails);
   }
   const shopSchedule = document.createElement("div");
-  shopSchedule.classList.add("menu-item");
-  const hoursOfOperation = teaShopDetails[4];
+  shopSchedule.classList.add("shop-schedule");
+
+  const shopScheduleTitle = document.createElement("p");
+  shopScheduleTitle.innerText = "Timings";
+  shopScheduleTitle.classList.add("schedule-title");
+  shopSchedule.appendChild(shopScheduleTitle);
+
+  const hoursOfOperation = teaShopDetails["hoursOfOperation"];
   for (const day in hoursOfOperation) {
     const dayTimings = hoursOfOperation[day];
     const dayText = document.createElement("p");
-    dayText.innerText = `${day}: ${dayTimings}`;
-    dayText.classList.add("contact-details");
+    dayText.innerText = `${day}:------------${dayTimings}`;
+    dayText.classList.add("time-details");
     shopSchedule.appendChild(dayText);
   }
   shopInfo.appendChild(shopSchedule);

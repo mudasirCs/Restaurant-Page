@@ -4,7 +4,7 @@ import loadMenuPage from "./menuPage";
 import { initializePage } from "./pageLoad";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const { body, contentDiv } = initializePage();
+  const { contentDiv } = initializePage();
   const btns = document.querySelectorAll(".navButton");
   const navBar = document.querySelector(".navBar");
   navigation(contentDiv, navBar, btns);
@@ -19,7 +19,7 @@ function navigation(contentDiv, navBar, btns) {
       activationFunctions[index](contentDiv);
     });
   });
-  btns[2].click();
+  btns[0].click();
 }
 
 function loadRefresher(contentDiv) {
