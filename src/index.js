@@ -19,7 +19,7 @@ function navigation(contentDiv, navBar, btns) {
       activationFunctions[index](contentDiv);
     });
   });
-  btns[1].click();
+  btns[2].click();
 }
 
 function loadRefresher(contentDiv) {

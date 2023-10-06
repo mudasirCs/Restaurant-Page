@@ -117,11 +117,11 @@ body {
   border-radius: 15px;
   background-color: rgba(255, 182, 193, 0.645);
 }
-/* menu-container>menuItem*3>img+title */
 .menu-container {
   font-size: 34px;
   padding: 30px 10px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   font-family: "tangerine";
   font-weight: 500;
@@ -168,15 +168,16 @@ body {
 .menu-item-title {
   color: var(--pink);
   font-weight: bolder;
+  height: 70px;
+  width: 70%;
   letter-spacing: 2.5px;
-  font-size: 30px;
+  font-size: 27px;
   -webkit-text-stroke: 1px black;
   transition: text-shadow 0.3s ease;
   position: absolute;
-  top: 10%;
+  top: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
-  white-space: nowrap;
 }
 
 .menu-item:hover .menu-item-title {
@@ -248,6 +249,15 @@ body {
   box-shadow: 0 0 5px red;
 }
 
+.menu-item-info * {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.259);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-item:hover .menu-item-info * {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+}
+
 .menu-item-ingredients {
   align-self: center;
   margin-top: auto;
@@ -272,15 +282,18 @@ body {
   display: none;
   position: fixed;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  left: 35%;
+  top: 25%;
+  border-radius: 15px;
+  width: 25%;
+  height: auto;
+  background-color: rgba(240, 128, 128, 0.597);
 }
 
 .modal-content {
   background-color: #fefefe;
+  font-size: 25px;
+  border-radius: 15px;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -298,4 +311,63 @@ body {
 
 .close:hover {
   color: black;
+}
+
+/* contactPage styling  starts here*/
+.contact-container {
+  font-size: 34px;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: "tangerine";
+  font-weight: 500;
+  border-radius: 15px;
+  background-color: rgba(255, 182, 193, 0.645);
+}
+
+.contact-item {
+  display: flex;
+  width: 80%;
+  height: 250px;
+  border-radius: 15px;
+  gap: 50px;
+  padding: 20px;
+  align-items: center;
+  border: 2px inset var(--pink);
+  background-color: rgba(255, 255, 255, 0.631);
+}
+
+/* .profile {
+} */
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+
+.contact-img {
+  --size: 140px;
+  border-radius: 50%;
+  border: 3px solid lightcoral;
+  width: var(--size);
+  height: var(--size);
+}
+
+.contact-name {
+  color: var(--pink);
+  font-size: 40px;
+  font-weight: bolder;
+  letter-spacing: 2.5px;
+  -webkit-text-stroke: 1px black;
+}
+
+.contact-details {
+  background-image: linear-gradient(to right, transparent 30%, lightcoral 70%);
+  background-position: 0 bottom;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
 }

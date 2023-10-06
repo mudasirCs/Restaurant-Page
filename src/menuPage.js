@@ -1,54 +1,129 @@
-import blackTeaImage from "./black_tea.jpeg";
-import greenTeaImage from "./green_tea.jpeg";
-import herbalTeaImage from "./herbal_tea.jpeg";
+import teaImage7 from "./chaiTea.jpeg";
+import teaImage1 from "./darjeelingTea.jpeg";
+import teaImage5 from "./earlGreyTea.jpeg";
+import teaImage10 from "./hibiscusHerbalTea.jpeg";
+import teaImage6 from "./jasminePearlTea.jpeg";
+import teaImage2 from "./matchaGreenTea.jpeg";
+import teaImage3 from "./oolongTea.jpeg";
+import teaImage8 from "./pu-erhTea.jpeg";
+import teaImage4 from "./rooibosTea.jpeg";
 import teacup from "./teacup.png";
+import teaImage9 from "./whitePeonyTea.jpeg";
+
+const teaOptions = [
+  {
+    src: teaImage1,
+    title: "Darjeeling Tea",
+    price: "$7.99",
+    origin: "Darjeeling, India",
+    description:
+      "Known as the 'Champagne of Teas', with a delicate and fruity flavor.",
+    ingredients: "100% Darjeeling Tea Leaves",
+    caffeine_level: 2,
+  },
+  {
+    src: teaImage2,
+    title: "Matcha Green Tea",
+    price: "$9.99",
+    origin: "Japan",
+    description:
+      "A vibrant green tea powder with a rich, umami flavor and high antioxidants.",
+    ingredients: "100% Matcha Green Tea Powder",
+    caffeine_level: 4,
+  },
+  {
+    src: teaImage3,
+    title: "Oolong Tea",
+    price: "$6.49",
+    origin: "Taiwan",
+    description:
+      "A semi-fermented tea with a smooth, floral taste and unique aroma.",
+    ingredients: "100% Oolong Tea Leaves",
+    caffeine_level: 3,
+  },
+  {
+    src: teaImage4,
+    title: "Rooibos Tea",
+    price: "$5.99",
+    origin: "South Africa",
+    description: "A caffeine-free herbal tea with a sweet and nutty flavor.",
+    ingredients: "100% Rooibos Tea Leaves",
+    caffeine_level: 0,
+  },
+  {
+    src: teaImage5,
+    title: "Earl Grey Tea",
+    price: "$6.99",
+    origin: "United Kingdom",
+    description:
+      "A classic black tea infused with bergamot oil for a citrusy aroma.",
+    ingredients: "Black Tea Leaves, Bergamot Oil",
+    caffeine_level: 3,
+  },
+  {
+    src: teaImage6,
+    title: "Jasmine Pearl Tea",
+    price: "$8.99",
+    origin: "China",
+    description:
+      "Green tea leaves rolled into pearls, scented with jasmine flowers.",
+    ingredients: "Green Tea Leaves, Jasmine Flowers",
+    caffeine_level: 2,
+  },
+  {
+    src: teaImage7,
+    title: "Chai Tea",
+    price: "$6.49",
+    origin: "India",
+    description:
+      "A spiced black tea with notes of cinnamon, cardamom, and cloves.",
+    ingredients: "Black Tea Leaves, Spices",
+    caffeine_level: 3,
+  },
+  {
+    src: teaImage8,
+    title: "Pu-erh Tea",
+    price: "$10.99",
+    origin: "Yunnan, China",
+    description:
+      "A fermented tea with a deep, earthy flavor and complex aroma.",
+    ingredients: "100% Pu-erh Tea Leaves",
+    caffeine_level: 4,
+  },
+  {
+    src: teaImage9,
+    title: "White Peony Tea",
+    price: "$7.49",
+    origin: "Fujian, China",
+    description: "A delicate white tea with a sweet and floral character.",
+    ingredients: "100% White Peony Tea Leaves",
+    caffeine_level: 1,
+  },
+  {
+    src: teaImage10,
+    title: "Hibiscus Herbal Tea",
+    price: "$5.99",
+    origin: "Egypt",
+    description: "A vibrant red herbal tea with a tart and fruity taste.",
+    ingredients: "Dried Hibiscus Flowers",
+    caffeine_level: 0,
+  },
+];
 
 export default function loadMenuPage(contentDiv) {
   const menuContainer = document.createElement("div");
   menuContainer.classList.add("menu-container");
 
-  //teaType, Origin, Description, Ingredients, caffeine level, Price
   const menuItems = [];
-  const teaOptions = [
-    {
-      src: blackTeaImage,
-      title: "Black Tea",
-      price: "$5.99",
-      origin: "Assam, India",
-      description: "A rich and bold black tea with a robust flavor.",
-      ingredients: "100% Black Tea Leaves",
-      caffeine_level: 3,
-    },
-    {
-      src: greenTeaImage,
-      title: "Green Tea",
-      price: "$4.99",
-      origin: "China",
-      description: "A refreshing and mild green tea with a natural aroma.",
-      ingredients: "100% Green Tea Leaves",
-      caffeine_level: 1,
-    },
-    {
-      src: herbalTeaImage,
-      title: "Herbal Tea",
-      price: "$6.49",
-      origin: "Asia",
-      description: "A soothing herbal blend with floral and herbal notes.",
-      ingredients: "Chamomile, lavender, rose petals",
-      caffeine_level: 0,
-    },
-  ];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < teaOptions.length; i++) {
     const menuImg = document.createElement("img");
     menuImg.classList.add("menu-item-img");
     menuImg.src = teaOptions[i].src;
     menuImg.alt = teaOptions[i].title;
 
-    const fileName = teaOptions[i].title;
-
     const menuTitle = document.createElement("p");
-    menuTitle.innerText = fileName;
+    menuTitle.innerText = teaOptions[i].title;
     menuTitle.classList.add("menu-item-title");
 
     //price, caffeine level, Origin, Description, Ingredients
@@ -94,10 +169,10 @@ export default function loadMenuPage(contentDiv) {
     menuContainer.append(menuItems[i]);
   }
   contentDiv.appendChild(menuContainer);
-  createModal(contentDiv, teaOptions);
+  createModal();
 }
 
-function createModal(teaOptions) {
+function createModal() {
   const body = document.querySelector("body");
   const modal = document.createElement("div");
   modal.classList.add("modal");
@@ -135,7 +210,9 @@ function createModal(teaOptions) {
       openModal();
       closeBtn.addEventListener("click", closeModal);
 
+      modalTitle.innerText = teaOptions[index].title;
       modalText.innerText = teaOptions[index].ingredients;
+
       window.addEventListener("click", (event) => {
         if (event.target === modal) {
           closeModal();
