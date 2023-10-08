@@ -3,14 +3,13 @@ import loadHomePage from "./homePage";
 import loadMenuPage from "./menuPage";
 import { initializePage } from "./pageLoad";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded" || "load", () => {
   const { contentDiv } = initializePage();
   const btns = document.querySelectorAll(".navButton");
-  const navBar = document.querySelector(".navBar");
-  navigation(contentDiv, navBar, btns);
+  navigation(contentDiv, btns);
 });
 
-function navigation(contentDiv, navBar, btns) {
+function navigation(contentDiv, btns) {
   const activationFunctions = [loadHomePage, loadMenuPage, loadContactPage];
 
   btns.forEach((btn, index) => {
