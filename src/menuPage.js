@@ -149,7 +149,7 @@ export default function loadMenuPage(contentDiv) {
     menuDescription.innerText = teaOptions[i].description;
     const menuIngredients = document.createElement("button");
     menuIngredients.innerText = `Ingredients`;
-    menuIngredients.classList.add("menu-item-ingredients"); //need to add ingredients modal
+    menuIngredients.classList.add("menu-item-ingredients");
 
     menuInfo.appendChild(menuOrigin);
     menuInfo.appendChild(menuDescription);

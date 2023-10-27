@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded" || "load", () => {
   navigation(contentDiv, btns);
 });
 
+//category, due date
+//can add the category as a key-value pair
+//functionality to add sort by due date, catergory, alphabetical order
+
 function navigation(contentDiv, btns) {
   const activationFunctions = [loadHomePage, loadMenuPage, loadContactPage];
 
